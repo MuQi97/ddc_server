@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://www.layui.com/demo/form.html -->
+<html class="site-demo-overflow"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>表单 - 在线演示 - layui</title>
+<meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  
+  <link rel="stylesheet" href="./表单 - 在线演示 - layui_files/layui.css" media="all">
+  <link rel="stylesheet" href="./表单 - 在线演示 - layui_files/global.css" media="all">
+<script src="./表单 - 在线演示 - layui_files/hm.js.下载"></script><style type="text/css" abt="234"></style><script>//remove 17173 video ad
+doAdblock();
+function doAdblock(){
+    (function() {
+        function A() {}
+        A.prototype = {
+            rules: {
+                '17173_in':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFile(Customer)?\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_in_20150522.swf"
+                },
+                '17173_out':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFileFirstpage\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_out_20150522.swf"
+                },
+                '17173_live':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream(_firstpage)?\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_stream_20150522.swf"
+                },
+                '17173_live_out':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream_(custom)?Out\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173.out.Live.swf"
+                }
+            },
+            _done: null,
+            get done() {
+                if(!this._done) {
+                    this._done = new Array();
+                }
+                return this._done;
+            },
+            addAnimations: function() {
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                style.innerHTML = 'object,embed{\
+                -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;\
+                -ms-animation-duration:.001s;-ms-animation-name:playerInserted;\
+                -o-animation-duration:.001s;-o-animation-name:playerInserted;\
+                animation-duration:.001s;animation-name:playerInserted;}\
+                @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}';
+                document.getElementsByTagName('head')[0].appendChild(style);
+            },
+            animationsHandler: function(e) {
+                if(e.animationName === 'playerInserted') {
+                    this.replace(e.target);
+                }
+            },
+            replace: function(elem) {
+                if(this.done.indexOf(elem) != -1) return;
+                this.done.push(elem);
+                var player = elem.data || elem.src;
+                if(!player) return;
+                var i, find, replace = false;
+                for(i in this.rules) {
+                    find = this.rules[i]['find'];
+                    if(find.test(player)) {
+                        replace = this.rules[i]['replace'];
+                        if('function' === typeof this.rules[i]['preHandle']) {
+                            this.rules[i]['preHandle'].bind(this, elem, find, replace, player)();
+                        }else{
+                            this.reallyReplace.bind(this, elem, find, replace)();
+                        }
+                        break;
+                    }
+                }
+            },
+            reallyReplace: function(elem, find, replace) {
+                elem.data && (elem.data = elem.data.replace(find, replace)) || elem.src && ((elem.src = elem.src.replace(find, replace)) && (elem.style.display = 'block'));
+                var b = elem.querySelector("param[name='movie']");
+                this.reloadPlugin(elem);
+            },
+            reloadPlugin: function(elem) {
+                var nextSibling = elem.nextSibling;
+                var parentNode = elem.parentNode;
+                parentNode.removeChild(elem);
+                var newElem = elem.cloneNode(true);
+                this.done.push(newElem);
+                if(nextSibling) {
+                    parentNode.insertBefore(newElem, nextSibling);
+                } else {
+                    parentNode.appendChild(newElem);
+                }
+            },
+            init: function() {
+                var handler = this.animationsHandler.bind(this);
+                document.body.addEventListener('webkitAnimationStart', handler, false);
+                document.body.addEventListener('msAnimationStart', handler, false);
+                document.body.addEventListener('oAnimationStart', handler, false);
+                document.body.addEventListener('animationstart', handler, false);
+                this.addAnimations();
+            }
+        };
+        new A().init();
+    })();
+}
+//remove baidu search ad
+if(document.URL.indexOf('www.baidu.com') >= 0){
+    if(document && document.getElementsByTagName && document.getElementById && document.body){
+        var aa = function(){
+            var all = document.body.querySelectorAll("#content_left div,#content_left table");
+            for(var i = 0; i < all.length; i++){
+                if(/display:\s?(table|block)\s!important/.test(all[i].getAttribute("style"))){all[i].style.display= "none";all[i].style.visibility='hidden';}
+            }
+            all = document.body.querySelectorAll('.result.c-container[id="1"]');
+            //if(all.length == 1) return;
+            for(var i = 0; i < all.length; i++){
+                if(all[i].innerHTML && all[i].innerHTML.indexOf('广告')>-1){
+                    all[i].style.display= "none";all[i].style.visibility='hidden';
+                }
+            }
+        }
+        aa();
+        document.getElementById('wrapper_wrapper').addEventListener('DOMSubtreeModified',aa)
+    };
+}
+//remove sohu video ad
+if (document.URL.indexOf("tv.sohu.com") >= 0){
+    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+}
+//remove 56.com video ad
+if (document.URL.indexOf("56.com") >= 0){
+    if (document.cookie.indexOf("fee_status=true")==-1){document.cookie='fee_status=true'};
+}
+//fore iqiyi enable html5 player function
+if (document.URL.indexOf("iqiyi.com") >= 0){
+    if (document.cookie.indexOf("player_forcedType=h5_VOD")==-1){
+        document.cookie='player_forcedType=h5_VOD'
+        if(localStorage.reloadTime && Date.now() - parseInt(localStorage.reloadTime)<60000){
+            console.log('no reload')
+        }else{
+            location.reload()
+            localStorage.reloadTime = Date.now();
+        }
+    }
+}
+</script><style type="text/css">object,embed{                -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;                -ms-animation-duration:.001s;-ms-animation-name:playerInserted;                -o-animation-duration:.001s;-o-animation-name:playerInserted;                animation-duration:.001s;animation-name:playerInserted;}                @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style><link id="layuicss-skincodecss" rel="stylesheet" href="./表单 - 在线演示 - layui_files/code.css" media="all"><link id="layuicss-layer" rel="stylesheet" href="./表单 - 在线演示 - layui_files/layer.css" media="all"><link id="layuicss-laydate" rel="stylesheet" href="./表单 - 在线演示 - layui_files/laydate.css" media="all"></head>
+<body>
+<div class="layui-layout layui-layout-admin">
+  
+
+
+<div class="layui-header header header-demo" summer="">
+  <div class="layui-main">
+    <a class="logo" href="https://www.layui.com/">
+      <img src="./表单 - 在线演示 - layui_files/logo.png" alt="layui">
+    </a>
+    <div class="layui-form component" lay-filter="LAY-site-header-component"><select lay-search="" lay-filter="component"><option value="">搜索组件或模块</option><option value="element/layout.html">grid 栅格布局</option><option value="element/layout.html#admin">admin 后台布局</option><option value="element/color.html">color 颜色</option><option value="element/icon.html">iconfont 字体图标</option><option value="element/anim.html">animation 动画</option><option value="element/button.html">button 按钮</option><option value="element/form.html">form 表单组</option><option value="element/form.html#input">input 输入框</option><option value="element/form.html#select">select 下拉选择框</option><option value="element/form.html#checkbox">checkbox 复选框</option><option value="element/form.html#switch">switch 开关</option><option value="element/form.html#radio">radio 单选框</option><option value="element/form.html#textarea">textarea 文本域</option><option value="element/nav.html">nav 导航菜单</option><option value="element/nav.html#breadcrumb">breadcrumb 面包屑</option><option value="element/tab.html">tabs 选项卡</option><option value="element/progress.html">progress 进度条</option><option value="element/collapse.html">collapse 折叠面板/手风琴</option><option value="element/table.html">table 表格元素</option><option value="element/badge.html">badge 徽章</option><option value="element/timeline.html">timeline 时间线</option><option value="element/auxiliar.html#blockquote">blockquote 引用块</option><option value="element/auxiliar.html#fieldset">fieldset 字段集</option><option value="element/auxiliar.html#hr">hr 分割线</option><option value="modules/layer.html">layer 弹出层/弹窗综合</option><option value="modules/laydate.html">laydate 日期时间选择器</option><option value="modules/layim.html">layim 即时通讯/聊天</option><option value="modules/laypage.html">laypage 分页</option><option value="modules/laytpl.html">laytpl 模板引擎</option><option value="modules/form.html">form 表单模块</option><option value="modules/table.html">table 数据表格</option><option value="modules/upload.html">upload 文件/图片上传</option><option value="modules/element.html">element 常用元素操作</option><option value="modules/rate.html">rate 评分</option><option value="modules/colorpicker.html">colorpicker 颜色选择器</option><option value="modules/slider.html">slider 滑块</option><option value="modules/carousel.html">carousel 轮播/跑马灯</option><option value="modules/layedit.html">layedit 富文本编辑器</option><option value="modules/tree.html">tree 树形菜单</option><option value="modules/flow.html">flow 信息流/图片懒加载</option><option value="modules/util.html">util 工具集</option><option value="modules/code.html">code 代码修饰</option></select><div class="layui-form-select"><div class="layui-select-title"><input type="text" placeholder="搜索组件或模块" value="" class="layui-input"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">搜索组件或模块</dd><dd lay-value="element/layout.html" class="">grid 栅格布局</dd><dd lay-value="element/layout.html#admin" class="">admin 后台布局</dd><dd lay-value="element/color.html" class="">color 颜色</dd><dd lay-value="element/icon.html" class="">iconfont 字体图标</dd><dd lay-value="element/anim.html" class="">animation 动画</dd><dd lay-value="element/button.html" class="">button 按钮</dd><dd lay-value="element/form.html" class="">form 表单组</dd><dd lay-value="element/form.html#input" class="">input 输入框</dd><dd lay-value="element/form.html#select" class="">select 下拉选择框</dd><dd lay-value="element/form.html#checkbox" class="">checkbox 复选框</dd><dd lay-value="element/form.html#switch" class="">switch 开关</dd><dd lay-value="element/form.html#radio" class="">radio 单选框</dd><dd lay-value="element/form.html#textarea" class="">textarea 文本域</dd><dd lay-value="element/nav.html" class="">nav 导航菜单</dd><dd lay-value="element/nav.html#breadcrumb" class="">breadcrumb 面包屑</dd><dd lay-value="element/tab.html" class="">tabs 选项卡</dd><dd lay-value="element/progress.html" class="">progress 进度条</dd><dd lay-value="element/collapse.html" class="">collapse 折叠面板/手风琴</dd><dd lay-value="element/table.html" class="">table 表格元素</dd><dd lay-value="element/badge.html" class="">badge 徽章</dd><dd lay-value="element/timeline.html" class="">timeline 时间线</dd><dd lay-value="element/auxiliar.html#blockquote" class="">blockquote 引用块</dd><dd lay-value="element/auxiliar.html#fieldset" class="">fieldset 字段集</dd><dd lay-value="element/auxiliar.html#hr" class="">hr 分割线</dd><dd lay-value="modules/layer.html" class="">layer 弹出层/弹窗综合</dd><dd lay-value="modules/laydate.html" class="">laydate 日期时间选择器</dd><dd lay-value="modules/layim.html" class="">layim 即时通讯/聊天</dd><dd lay-value="modules/laypage.html" class="">laypage 分页</dd><dd lay-value="modules/laytpl.html" class="">laytpl 模板引擎</dd><dd lay-value="modules/form.html" class="">form 表单模块</dd><dd lay-value="modules/table.html" class="">table 数据表格</dd><dd lay-value="modules/upload.html" class="">upload 文件/图片上传</dd><dd lay-value="modules/element.html" class="">element 常用元素操作</dd><dd lay-value="modules/rate.html" class="">rate 评分</dd><dd lay-value="modules/colorpicker.html" class="">colorpicker 颜色选择器</dd><dd lay-value="modules/slider.html" class="">slider 滑块</dd><dd lay-value="modules/carousel.html" class="">carousel 轮播/跑马灯</dd><dd lay-value="modules/layedit.html" class="">layedit 富文本编辑器</dd><dd lay-value="modules/tree.html" class="">tree 树形菜单</dd><dd lay-value="modules/flow.html" class="">flow 信息流/图片懒加载</dd><dd lay-value="modules/util.html" class="">util 工具集</dd><dd lay-value="modules/code.html" class="">code 代码修饰</dd></dl></div></div>
+    <ul class="layui-nav">
+      <li class="layui-nav-item ">
+        <a href="https://www.layui.com/doc/">文档<!-- <span class="layui-badge-dot"></span> --></a> 
+      </li>
+      <li class="layui-nav-item layui-this">
+        <a href="https://www.layui.com/demo/">示例<!--  --></a>
+      </li>
+      
+      
+      
+      
+      <li class="layui-nav-item layui-hide-xs">
+        <a href="https://fly.layui.com/" target="_blank">社区</a>
+      </li>
+      
+      <li class="layui-nav-item">
+        <a href="javascript:;"><!--<span class="layui-badge-dot" style="margin: -5px 0 0 -15px;"></span>-->周边<span class="layui-nav-more"></span></a>
+        <dl class="layui-nav-child">
+          <dd lay-unselect="">
+            <a href="https://fly.layui.com/extend/" target="_blank">扩展组件</a>
+          </dd>
+          <dd lay-unselect="">
+            <a href="https://fly.layui.com/store/" target="_blank">模板市场 <span class="layui-badge-dot"></span></a>
+            <hr>
+          </dd>
+          
+          <dd class="layui-hide-sm layui-show-xs" lay-unselect="">
+            <a href="https://fly.layui.com/" target="_blank">社区交流</a>
+            <hr>
+          </dd>
+          <dd lay-unselect=""><a href="https://www.layui.com/admin/" target="_blank">后台模板</a></dd>
+          <dd lay-unselect=""><a href="https://www.layui.com/layim/" target="_blank">即时聊天</a><hr></dd>
+          
+          <dd lay-unselect=""><a href="https://www.layui.com/alone.html" target="_blank" lay-unselect="">独立组件</a></dd>
+          <dd lay-unselect=""><a href="https://fly.layui.com/jie/24209/" target="_blank">Axure 组件</a></dd>
+        </dl>
+      </li>
+      
+      <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+        <a href="https://www.layui.com/admin/">后台模板<span class="layui-badge-dot" style="margin-top: -5px;"></span></a>
+      </li>
+    <span class="layui-nav-bar" style="left: 381.938px; top: 55px; width: 0px; opacity: 0;"></span></ul>
+  </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]--> 
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      
+<ul class="layui-nav layui-nav-tree site-demo-nav">
+  
+  <li class="layui-nav-item layui-nav-itemed">
+    <a class="javascript:;" href="javascript:;">开发工具<span class="layui-nav-more"></span></a>
+    <dl class="layui-nav-child">
+      <dd>
+        <a href="https://www.layui.com/demo/">调试预览</a>
+      </dd>
+    </dl>
+  </li>
+  
+  <li class="layui-nav-item layui-nav-itemed">
+    <a class="javascript:;" href="javascript:;">布局<span class="layui-nav-more"></span></a>
+    <dl class="layui-nav-child">
+      <dd class="">
+        <a href="https://www.layui.com/demo/grid.html">栅格</a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/admin.html">后台布局</a>
+      </dd>
+    </dl>
+  </li>
+  
+  <li class="layui-nav-item layui-nav-itemed">
+    <a class="javascript:;" href="javascript:;">基本元素<span class="layui-nav-more"></span></a>
+    <dl class="layui-nav-child">
+      <dd class="">
+        <a href="https://www.layui.com/demo/button.html">按钮</a>
+      </dd>
+      <dd class="layui-this">
+        <a href="https://www.layui.com/demo/form.html">表单</a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/nav.html">导航/面包屑</a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/tab.html">选项卡</a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/progress.html">进度条</a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/panel.html">面板</a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/badge.html">徽章</a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/timeline.html">时间线</a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/table-element.html">静态表格</a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/anim.html">动画</a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/auxiliar.html">辅助元素</a>
+      </dd>
+    </dl>
+  </li>
+  
+  <li class="layui-nav-item layui-nav-itemed">
+    <a class="javascript:;" href="javascript:;">组件示例<span class="layui-nav-more"></span></a>
+    <dl class="layui-nav-child">
+      <dd class="">
+        <a href="https://www.layui.com/demo/layer.html">
+          弹出层
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/laydate.html">
+          日期与时间选择
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/layim.html">
+          即时通讯
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/table.html">
+          数据表格
+        </a>
+      </dd>
+       <dd class="">
+        <a href="https://www.layui.com/demo/laypage.html">
+          分页
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/upload.html">
+          文件上传
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/transfer.html">
+          穿梭框
+        </a>
+      </dd>
+      
+       <dd class="">
+        <a href="https://www.layui.com/demo/tree.html">
+          树形组件
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/colorpicker.html">
+          颜色选择器
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/slider.html">
+          滑块
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/rate.html">
+          评分
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/carousel.html">
+          轮播
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/laytpl.html">
+          模板引擎
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/flow.html">
+          流加载
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/util.html">
+          工具集
+        </a>
+      </dd>
+      <dd class="">
+        <a href="https://www.layui.com/demo/code.html">
+          代码修饰器
+        </a>
+      </dd>
+    </dl>
+  </li>
+  
+  <li class="layui-nav-item" style="height: 30px; text-align: center"></li>
+<span class="layui-nav-bar" style="top: 232.5px; height: 0px; opacity: 0;"></span></ul>
+
+    </div>
+  </div>
+  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+    <ul class="layui-tab-title site-demo-title">
+      <li class="layui-this">预览</li>
+      <li>查看代码</li>
+      <li>帮助</li>
+    </ul>
+    <div class="layui-body layui-tab-content site-demo site-demo-body">
+    
+    
+      <div class="layui-tab-item layui-show">
+        <div class="layui-main">
+          <div id="LAY_preview">
+          
+<blockquote class="layui-elem-quote layui-text">
+  鉴于小伙伴的普遍反馈，先温馨提醒两个常见“问题”：1. <a href="https://www.layui.com/doc/base/faq.html#form" target="_blank">为什么select/checkbox/radio没显示？</a> 2. <a href="https://www.layui.com/doc/modules/form.html#render" target="_blank">动态添加的表单元素如何更新？</a>
+</blockquote>
+              
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+  <legend>表单集合演示</legend>
+</fieldset>
+ 
+<form class="layui-form" action="https://www.layui.com/demo/form.html">
+  <div class="layui-form-item">
+    <label class="layui-form-label">单行输入框</label>
+    <div class="layui-input-block">
+      <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">验证必填项</label>
+    <div class="layui-input-block">
+      <input type="text" name="username" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">验证手机</label>
+      <div class="layui-input-inline">
+        <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">验证邮箱</label>
+      <div class="layui-input-inline">
+        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">多规则验证</label>
+      <div class="layui-input-inline">
+        <input type="text" name="number" lay-verify="required|number" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">验证日期</label>
+      <div class="layui-input-inline">
+        <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" lay-key="1">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">验证链接</label>
+      <div class="layui-input-inline">
+        <input type="tel" name="url" lay-verify="url" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">验证身份证</label>
+    <div class="layui-input-block">
+      <input type="text" name="identity" lay-verify="identity" placeholder="" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">自定义验证</label>
+    <div class="layui-input-inline">
+      <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">范围</label>
+      <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" name="price_min" placeholder="￥" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid">-</div>
+      <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" name="price_max" placeholder="￥" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">单行选择框</label>
+    <div class="layui-input-block">
+      <select name="interest" lay-filter="aihao">
+        <option value=""></option>
+        <option value="0">写作</option>
+        <option value="1" selected="">阅读</option>
+        <option value="2">游戏</option>
+        <option value="3">音乐</option>
+        <option value="4">旅行</option>
+      </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择" value="阅读" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择</dd><dd lay-value="0" class="">写作</dd><dd lay-value="1" class="layui-this">阅读</dd><dd lay-value="2" class="">游戏</dd><dd lay-value="3" class="">音乐</dd><dd lay-value="4" class="">旅行</dd></dl></div>
+    </div>
+  </div>
+  
+  
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">搜索选择框</label>
+      <div class="layui-input-inline">
+        <select name="modules" lay-verify="required" lay-search="">
+          <option value="">直接选择或搜索选择</option>
+          <option value="1">layer</option>
+          <option value="2">form</option>
+          <option value="3">layim</option>
+          <option value="4">element</option>
+          <option value="5">laytpl</option>
+          <option value="6">upload</option>
+          <option value="7">laydate</option>
+          <option value="8">laypage</option>
+          <option value="9">flow</option>
+          <option value="10">util</option>
+          <option value="11">code</option>
+          <option value="12">tree</option>
+          <option value="13">layedit</option>
+          <option value="14">nav</option>
+          <option value="15">tab</option>
+          <option value="16">table</option>
+          <option value="17">select</option>
+          <option value="18">checkbox</option>
+          <option value="19">switch</option>
+          <option value="20">radio</option>
+        </select>
+        <div class="layui-form-select"><div class="layui-select-title"><input type="text" placeholder="直接选择或搜索选择" value="" class="layui-input"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit" style=""><dd lay-value="" class="layui-select-tips">直接选择或搜索选择</dd><dd lay-value="1" class="layui-this">layer</dd><dd lay-value="2" class="">form</dd><dd lay-value="3" class="">layim</dd><dd lay-value="4" class="">element</dd><dd lay-value="5" class="">laytpl</dd><dd lay-value="6" class="">upload</dd><dd lay-value="7" class="">laydate</dd><dd lay-value="8" class="">laypage</dd><dd lay-value="9" class="">flow</dd><dd lay-value="10" class="">util</dd><dd lay-value="11" class="">code</dd><dd lay-value="12" class="">tree</dd><dd lay-value="13" class="">layedit</dd><dd lay-value="14" class="">nav</dd><dd lay-value="15" class="">tab</dd><dd lay-value="16" class="">table</dd><dd lay-value="17" class="">select</dd><dd lay-value="18" class="">checkbox</dd><dd lay-value="19" class="">switch</dd><dd lay-value="20" class="">radio</dd></dl></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">联动选择框</label>
+    <div class="layui-input-inline">
+      <select name="quiz1">
+        <option value="">请选择省</option>
+        <option value="浙江" selected="">浙江省</option>
+        <option value="你的工号">江西省</option>
+        <option value="你最喜欢的老师">福建省</option>
+      </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择省" value="浙江省" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit" style=""><dd lay-value="" class="layui-select-tips">请选择省</dd><dd lay-value="浙江" class="">浙江省</dd><dd lay-value="你的工号" class="layui-this">江西省</dd><dd lay-value="你最喜欢的老师" class="">福建省</dd></dl></div>
+    </div>
+    <div class="layui-input-inline">
+      <select name="quiz2">
+        <option value="">请选择市</option>
+        <option value="杭州">杭州</option>
+        <option value="宁波" disabled="">宁波</option>
+        <option value="温州">温州</option>
+        <option value="温州">台州</option>
+        <option value="温州">绍兴</option>
+      </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择市" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit" style=""><dd lay-value="" class="layui-select-tips">请选择市</dd><dd lay-value="杭州" class="layui-this">杭州</dd><dd lay-value="宁波" class="layui-disabled">宁波</dd><dd lay-value="温州" class="">温州</dd><dd lay-value="温州" class="">台州</dd><dd lay-value="温州" class="">绍兴</dd></dl></div>
+    </div>
+    <div class="layui-input-inline">
+      <select name="quiz3">
+        <option value="">请选择县/区</option>
+        <option value="西湖区">西湖区</option>
+        <option value="余杭区">余杭区</option>
+        <option value="拱墅区">临安市</option>
+      </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择县/区" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit" style=""><dd lay-value="" class="layui-select-tips">请选择县/区</dd><dd lay-value="西湖区" class="">西湖区</dd><dd lay-value="余杭区" class="">余杭区</dd><dd lay-value="拱墅区" class="">临安市</dd></dl></div>
+    </div>
+    <div class="layui-form-mid layui-word-aux">此处只是演示联动排版，并未做联动交互</div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">复选框</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="like[write]" title="写作"><div class="layui-unselect layui-form-checkbox"><span>写作</span><i class="layui-icon layui-icon-ok"></i></div>
+      <input type="checkbox" name="like[read]" title="阅读" checked=""><div class="layui-unselect layui-form-checkbox layui-form-checked"><span>阅读</span><i class="layui-icon layui-icon-ok"></i></div>
+      <input type="checkbox" name="like[game]" title="游戏"><div class="layui-unselect layui-form-checkbox"><span>游戏</span><i class="layui-icon layui-icon-ok"></i></div>
+    </div>
+  </div>
+  
+  <div class="layui-form-item" pane="">
+    <label class="layui-form-label">原始复选框</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked=""><div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>写作</span><i class="layui-icon layui-icon-ok"></i></div>
+      <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读"><div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary"><span>阅读</span><i class="layui-icon layui-icon-ok"></i></div>
+      <input type="checkbox" name="like1[game]" lay-skin="primary" title="游戏" disabled=""><div class="layui-unselect layui-form-checkbox layui-checkbox-disbaled layui-disabled" lay-skin="primary"><span>游戏</span><i class="layui-icon layui-icon-ok"></i></div>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">开关-默认关</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF"><div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>OFF</em><i></i></div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">开关-默认开</label>
+    <div class="layui-input-block">
+      <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF"><div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">单选框</label>
+    <div class="layui-input-block">
+      <input type="radio" name="sex" value="男" title="男" checked=""><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon layui-anim-scaleSpring"></i><div>男</div></div>
+      <input type="radio" name="sex" value="女" title="女"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>女</div></div>
+      <input type="radio" name="sex" value="禁" title="禁用" disabled=""><div class="layui-unselect layui-form-radio layui-radio-disbaled layui-disabled"><i class="layui-anim layui-icon"></i><div>禁用</div></div>
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">普通文本域</label>
+    <div class="layui-input-block">
+      <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <!--<div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">编辑器</label>
+    <div class="layui-input-block">
+      <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+    </div>
+  </div>-->
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+ 
+<!-- 示例-970 -->
+<ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>
+  
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+  <legend>初始赋值演示</legend>
+</fieldset>
+ 
+<form class="layui-form" action="https://www.layui.com/demo/form.html" lay-filter="example">
+  <div class="layui-form-item">
+    <label class="layui-form-label">输入框</label>
+    <div class="layui-input-block">
+      <input type="text" name="username" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">密码框</label>
+    <div class="layui-input-block">
+      <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">选择框</label>
+    <div class="layui-input-block">
+      <select name="interest" lay-filter="aihao">
+        <option value=""></option>
+        <option value="0">写作</option>
+        <option value="1">阅读</option>
+        <option value="2">游戏</option>
+        <option value="3">音乐</option>
+        <option value="4">旅行</option>
+      </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择" value="阅读" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择</dd><dd lay-value="0" class="">写作</dd><dd lay-value="1" class="layui-this">阅读</dd><dd lay-value="2" class="">游戏</dd><dd lay-value="3" class="">音乐</dd><dd lay-value="4" class="">旅行</dd></dl></div>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">复选框</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="like[write]" title="写作"><div class="layui-unselect layui-form-checkbox layui-form-checked"><span>写作</span><i class="layui-icon layui-icon-ok"></i></div>
+      <input type="checkbox" name="like[read]" title="阅读"><div class="layui-unselect layui-form-checkbox"><span>阅读</span><i class="layui-icon layui-icon-ok"></i></div>
+      <input type="checkbox" name="like[daze]" title="发呆"><div class="layui-unselect layui-form-checkbox"><span>发呆</span><i class="layui-icon layui-icon-ok"></i></div>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">开关</label>
+    <div class="layui-input-block">
+      <input type="checkbox" name="close" lay-skin="switch" lay-text="ON|OFF"><div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em>ON</em><i></i></div>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">单选框</label>
+    <div class="layui-input-block">
+      <input type="radio" name="sex" value="男" title="男" checked=""><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>男</div></div>
+      <input type="radio" name="sex" value="女" title="女"><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>女</div></div>
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">文本域</label>
+    <div class="layui-input-block">
+      <textarea placeholder="请输入内容" class="layui-textarea" name="desc"></textarea>
+    </div>
+  </div>
+ 
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+    </div>
+  </div>
+</form>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+  <legend>方框风格的表单集合</legend>
+</fieldset>
+<form class="layui-form layui-form-pane" action="https://www.layui.com/demo/form.html">
+  <div class="layui-form-item">
+    <label class="layui-form-label">长输入框</label>
+    <div class="layui-input-block">
+      <input type="text" name="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">短输入框</label>
+    <div class="layui-input-inline">
+      <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">日期选择</label>
+      <div class="layui-input-block">
+        <input type="text" name="date" id="date1" autocomplete="off" class="layui-input" lay-key="2">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">行内表单</label>
+      <div class="layui-input-inline">
+        <input type="text" name="number" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">密码</label>
+    <div class="layui-input-inline">
+      <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-form-mid layui-word-aux">请务必填写用户名</div>
+  </div>
+  
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">范围</label>
+      <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" name="price_min" placeholder="￥" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid">-</div>
+      <div class="layui-input-inline" style="width: 100px;">
+        <input type="text" name="price_max" placeholder="￥" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">单行选择框</label>
+    <div class="layui-input-block">
+      <select name="interest" lay-filter="aihao">
+        <option value=""></option>
+        <option value="0">写作</option>
+        <option value="1" selected="">阅读</option>
+        <option value="2">游戏</option>
+        <option value="3">音乐</option>
+        <option value="4">旅行</option>
+      </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择" value="阅读" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择</dd><dd lay-value="0" class="">写作</dd><dd lay-value="1" class="layui-this">阅读</dd><dd lay-value="2" class="">游戏</dd><dd lay-value="3" class="">音乐</dd><dd lay-value="4" class="">旅行</dd></dl></div>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">行内选择框</label>
+    <div class="layui-input-inline">
+      <select name="quiz1">
+        <option value="">请选择省</option>
+        <option value="浙江" selected="">浙江省</option>
+        <option value="你的工号">江西省</option>
+        <option value="你最喜欢的老师">福建省</option>
+      </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择省" value="浙江省" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择省</dd><dd lay-value="浙江" class="layui-this">浙江省</dd><dd lay-value="你的工号" class="">江西省</dd><dd lay-value="你最喜欢的老师" class="">福建省</dd></dl></div>
+    </div>
+    <div class="layui-input-inline">
+      <select name="quiz2">
+        <option value="">请选择市</option>
+        <option value="杭州">杭州</option>
+        <option value="宁波" disabled="">宁波</option>
+        <option value="温州">温州</option>
+        <option value="温州">台州</option>
+        <option value="温州">绍兴</option>
+      </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择市" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择市</dd><dd lay-value="杭州" class="">杭州</dd><dd lay-value="宁波" class=" layui-disabled">宁波</dd><dd lay-value="温州" class="">温州</dd><dd lay-value="温州" class="">台州</dd><dd lay-value="温州" class="">绍兴</dd></dl></div>
+    </div>
+    <div class="layui-input-inline">
+      <select name="quiz3">
+        <option value="">请选择县/区</option>
+        <option value="西湖区">西湖区</option>
+        <option value="余杭区">余杭区</option>
+        <option value="拱墅区">临安市</option>
+      </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input type="text" placeholder="请选择县/区" value="" readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="" class="layui-select-tips">请选择县/区</dd><dd lay-value="西湖区" class="">西湖区</dd><dd lay-value="余杭区" class="">余杭区</dd><dd lay-value="拱墅区" class="">临安市</dd></dl></div>
+    </div>
+  </div>
+  <div class="layui-form-item" pane="">
+    <label class="layui-form-label">开关-开</label>
+    <div class="layui-input-block">
+      <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" title="开关"><div class="layui-unselect layui-form-switch layui-form-onswitch" lay-skin="_switch"><em></em><i></i></div>
+    </div>
+  </div>
+  <div class="layui-form-item" pane="">
+    <label class="layui-form-label">单选框</label>
+    <div class="layui-input-block">
+      <input type="radio" name="sex" value="男" title="男" checked=""><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>男</div></div>
+      <input type="radio" name="sex" value="女" title="女"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>女</div></div>
+      <input type="radio" name="sex" value="禁" title="禁用" disabled=""><div class="layui-unselect layui-form-radio layui-radio-disbaled layui-disabled"><i class="layui-anim layui-icon"></i><div>禁用</div></div>
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">文本域</label>
+    <div class="layui-input-block">
+      <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <button class="layui-btn" lay-submit="" lay-filter="demo2">跳转式提交</button>
+  </div>
+</form>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+      <div class="layui-tab-item">
+<textarea class="layui-border-box site-demo-text site-demo-code" id="LAY_democode" spellcheck="false" readonly="">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;layui&lt;/title&gt;
+  &lt;meta name="renderer" content="webkit"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"&gt;
+  &lt;link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css"  media="all"&gt;
+  &lt;!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 --&gt;
+&lt;/head&gt;
+</textarea>
+      </div>
+      <div class="layui-tab-item">
+        <div class="layui-main">
+          <p></p>
+          
+          
+
+<div style="margin: 15px 0;">
+  <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="6835627838"></ins>
+</div>
+
+
+          
+          <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+            <legend>相关</legend>
+          </fieldset>
+          <a class="layui-btn layui-btn-normal" href="https://www.layui.com/doc/element/form.html" target="_blank">表单元素文档</a>
+          <a class="layui-btn layui-btn-normal" href="https://www.layui.com/doc/modules/form.html" target="_blank">表单组件文档</a>
+        </div>
+      </div>
+        
+        
+    </div>
+  </div>
+  <div class="layui-footer footer footer-demo">
+  <div class="layui-main">
+    <p>© 2019 <a href="https://www.layui.com/">layui.com</a> MIT license</p>
+    <p>
+      <a href="http://fly.layui.com/case/2019/" target="_blank">案例</a>
+      <a href="http://fly.layui.com/jie/3147/" target="_blank">支持</a>
+      <!--<a href="javascript:;" site-event="contactInfo">联系</a>-->
+      <a href="https://github.com/sentsin/layui/" target="_blank" rel="nofollow">GitHub</a>
+      <a href="https://gitee.com/sentsin/layui" target="_blank" rel="nofollow">码云</a>
+      <a href="http://fly.layui.com/jie/2461/" target="_blank">公众号</a>
+      <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">赣ICP备13006272号-2</a>
+    </p>
+    <p class="site-union">
+      <a href="https://console.upyun.com/register/?invite=SJ0wu6g2-" target="_blank" rel="nofollow" upyun=""><img src="./表单 - 在线演示 - layui_files/upyun.png" alt="upyun"></a>
+      <span>提供云加速赞助</span>
+    </p>
+  </div>
+</div>
+<script async="" src="./表单 - 在线演示 - layui_files/f.txt"></script>
+<div class="site-tree-mobile layui-hide">
+  <i class="layui-icon"></i>
+</div>
+<div class="site-mobile-shade"></div>
+<script src="./表单 - 在线演示 - layui_files/layui.js.下载" charset="utf-8"></script>
+<script>
+window.global = {
+  pageType: 'demo'
+  ,preview: function(){
+    var preview = document.getElementById('LAY_preview');
+    return preview ? preview.innerHTML : '';
+  }()
+};
+layui.config({
+  base: '//res.layui.com/static/lay/modules/layui/'
+  ,version: '1560414887305'
+}).use('global');
+</script>
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d214947968792b839fd669a4decaaffc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div>
+<div id="LAY_democodejs">
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+  //日期
+  laydate.render({
+    elem: '#date'
+  });
+  laydate.render({
+    elem: '#date1'
+  });
+  
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+ 
+  //自定义验证规则
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [
+      /^[\S]{6,12}$/
+      ,'密码必须6到12位，且不能出现空格'
+    ]
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+  
+  //监听指定开关
+  form.on('switch(switchTest)', function(data){
+    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  });
+  
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });
+ 
+  //表单初始赋值
+  form.val('example', {
+    "username": "贤心" // "name": "value"
+    ,"password": "123456"
+    ,"interest": 1
+    ,"like[write]": true //复选框选中状态
+    ,"close": true //开关状态
+    ,"sex": "女"
+    ,"desc": "我爱 layui"
+  })
+  
+  
+});
+</script>
+</div>
+
+<div class="layui-layer-move"></div></body></html>
